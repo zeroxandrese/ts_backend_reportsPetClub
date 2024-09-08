@@ -1,4 +1,5 @@
-import { Request, Response } from "express";
+//Comentado por seguridad, no hay creacion por peticion habilitada a este endpoint
+/* import { Request, Response } from "express";
 import { userPostService } from "../services/users"
 
 const postUser = async (req: Request, res: Response) => {
@@ -24,4 +25,4 @@ const postUser = async (req: Request, res: Response) => {
 
 };
 
-export { postUser };
+export { postUser }; */

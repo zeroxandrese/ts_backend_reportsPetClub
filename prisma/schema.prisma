@@ -24,3 +24,68 @@ model Tokens {
 
   @@map("tokens")
 }
+
+model CountUsers {
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countUsers")
+}
+
+model CountPets {
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countPets")
+}
+
+model CountImages {
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countImages")
+}
+
+model CountVideos{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countVideos")
+}
+
+model CountPoints{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countPoints")
+}
+
+model CountLikes{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countLikes")
+}
+
+model CountReports{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countReports")
+}
+
+model CountAlerts{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countAlerts")
+}
+
+model CountComments{
+  uid     String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+
+  @@map("countComments")
+}
+
+
