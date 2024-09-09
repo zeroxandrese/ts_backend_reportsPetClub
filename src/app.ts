@@ -7,7 +7,12 @@ import { router } from "./routes";
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(cors({ origin: 'https://petclub.com.pe/', methods: ['GET', 'POST'] }));
+app.use(cors({
+    origin: 'https://petclub.com.pe',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
 app.use(express.json());
 app.use(router);
 dbConection2().then(()=>console.log('BD2 Conectada al Server Reporteria😎'));
