@@ -8,9 +8,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors({
-    origin: 'https://petclub.com.pe',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: '*',
+    methods: ['GET', 'POST'],
     credentials: true
   }));
 app.use(express.json());
