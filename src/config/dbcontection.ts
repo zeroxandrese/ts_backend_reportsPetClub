@@ -7,7 +7,7 @@ const dbConection2 = async (): Promise<void> =>{
     try {
         if (!conectionDB2) {
             mongoose.set('strictQuery', true);
-            await mongoose.connect(process.env.MONGODB_CNN2!,);
+            await mongoose.connect(process.env.MONGODB_CNN2!);
             conectionDB2 = true
             console.log('Conectado a la DB2 desde Server reporteria hijo😎');
         }
