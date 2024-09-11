@@ -12,6 +12,7 @@ const dbConection2 = async (): Promise<void> =>{
             console.log('Conectado a la DB2 desde Server reporteria hijo😎');
         }
     } catch (error) {
+        console.log("Error detallado:", error);
         throw new Error("Error al iniciar la conexion con la DB2 desde Server reporteria");
         
     }
