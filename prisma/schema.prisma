@@ -10,6 +10,7 @@ datasource db {
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   Name      String   @unique
+  Lead      String  @default("Usr")
   Password  String
   Lastlogin DateTime @default(now())
 
