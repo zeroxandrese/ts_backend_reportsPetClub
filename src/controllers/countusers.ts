@@ -9,7 +9,6 @@ const countUserController = async (req: Request, res: Response) => {
         res.status(201).json(responseCountUser)
 
     } catch (error) {
-        res.sendStatus(501)
         throw new Error("Problemas con el registro, comunicate con el admin");
     }
 };

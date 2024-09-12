@@ -25,7 +25,6 @@ const authController = async (req: Request, res: Response) => {
         })
 
     } catch (error) {
-        res.sendStatus(501)
         throw new Error("Problemas al conectar contacta al admin");
 
     }
