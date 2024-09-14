@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://petclub.com.pe',
     methods: ['GET', 'POST']
   }));
 app.use(express.json());

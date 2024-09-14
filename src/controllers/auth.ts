@@ -11,7 +11,7 @@ const authController = async (req: Request, res: Response) => {
             });
 
         };
-
+       
         const responseLogin = await loginService({ name, password });
 
         if (responseLogin.message !== "LOGIN_SUCCESSFUL") {

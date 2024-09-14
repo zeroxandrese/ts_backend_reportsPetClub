@@ -19,10 +19,20 @@ const infoService = async () => {
 
             const collectionUsers = db.collection('users');
             const responseOriginUsers = await collectionUsers.countDocuments();
+            const responseOriginUsersActive = await collectionUsers.countDocuments({
+                    status: true
+            });
             await prisma.countUsers.deleteMany();
             await prisma.countUsers.create({
                 data: {
-                    count: responseOriginUsers
+                    count: responseOriginUsers,
+                    statusCount: false
+                }
+            });
+            await prisma.countUsers.create({
+                data: {
+                    count: responseOriginUsersActive,
+                    statusCount: true
                 }
             });
 
@@ -37,38 +47,75 @@ const infoService = async () => {
 
             const collectionPets = db.collection('pets');
             const responseOriginPets = await collectionPets.countDocuments();
+            const responseOriginPetsActive = await collectionPets.countDocuments({
+                    status: true
+            });
             await prisma.countPets.deleteMany();
             await prisma.countPets.create({
                 data: {
-                    count: responseOriginPets
+                    count: responseOriginPets,
+                    statusCount: false
                 }
             });
+            await prisma.countPets.create({
+                data: {
+                    count: responseOriginPetsActive,
+                    statusCount: true
+                }
+            });
+            //Seccion observada(Andres Lopez)
+            /*const collectionImages = db.collection('countimage');
+                         const responseOriginImagesArray = await collectionImages.find({}).toArray();
+                        await prisma.countImages.deleteMany();
+                        const countWithImg = responseOriginImagesArray.reduce((acc, item) => {
+                            return acc + item.images
+                        }, 0) */
 
-            const collectionImages = db.collection('countimage');
-            const responseOriginImagesArray = await collectionImages.find({}).toArray();
+            const collectionImages = db.collection('images');
+            const responseOriginImages = await collectionImages.countDocuments({
+                    img: { $regex: "image", $options: "i" }
+            });
+            const responseOriginImagesActive = await collectionImages.countDocuments({
+                    status: true,
+                    img: { $regex: "image", $options: "i" }
+            });
             await prisma.countImages.deleteMany();
-            const countWithImg = responseOriginImagesArray.reduce((acc, item) => {
-                return acc + item.images
-            }, 0)
             await prisma.countImages.create({
                 data: {
-                    count: countWithImg
+                    count: responseOriginImages,
+                    statusCount: false
+                }
+            });
+            await prisma.countImages.create({
+                data: {
+                    count: responseOriginImagesActive,
+                    statusCount: true
                 }
             });
 
-            const collectionVideos = db.collection('countvideos');
-            const responseOriginVideosArray = await collectionVideos.find({}).toArray();
+            const collectionVideos = db.collection('images');
+            const responseOriginVideos = await collectionVideos.countDocuments({
+                    img: { $regex: "video", $options: "i" }
+            });
+            const responseOriginVideosActive = await collectionVideos.countDocuments({
+                    status: true,
+                    img: { $regex: "video", $options: "i" }
+            });
             await prisma.countVideos.deleteMany();
-            const countWithVideosImg = responseOriginVideosArray.reduce((acc, item) => {
-                return acc + item.videos
-            }, 0)
             await prisma.countVideos.create({
                 data: {
-                    count: countWithVideosImg
+                    count: responseOriginVideos,
+                    statusCount: false
+                }
+            });
+            await prisma.countVideos.create({
+                data: {
+                    count: responseOriginVideosActive,
+                    statusCount: true
                 }
             });
 
-            const collectionPoints = db.collection('countPoints');
+            const collectionPoints = db.collection('pawscounts');
             const responseOriginPointsArray = await collectionPoints.find({}).toArray();
             await prisma.countPoints.deleteMany();
             const countPoints = responseOriginPointsArray.reduce((acc, item) => {

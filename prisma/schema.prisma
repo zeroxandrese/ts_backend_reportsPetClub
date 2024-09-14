@@ -10,7 +10,7 @@ datasource db {
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   Name      String   @unique
-  Lead      String  @default("Usr")
+  Lead      String   @default("Usr")
   Password  String
   Lastlogin DateTime @default(now())
 
@@ -27,66 +27,68 @@ model Tokens {
 }
 
 model CountUsers {
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
+  statusCount Boolean
 
   @@map("countUsers")
 }
 
 model CountPets {
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
+  statusCount Boolean
 
   @@map("countPets")
 }
 
 model CountImages {
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+  uid         String  @id @default(auto()) @map("_id") @db.ObjectId
+  count       Int
+  statusCount Boolean
 
   @@map("countImages")
 }
 
-model CountVideos{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountVideos {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
+  statusCount Boolean
 
   @@map("countVideos")
 }
 
-model CountPoints{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountPoints {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
 
   @@map("countPoints")
 }
 
-model CountLikes{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountLikes {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
 
   @@map("countLikes")
 }
 
-model CountReports{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountReports {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
 
   @@map("countReports")
 }
 
-model CountAlerts{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountAlerts {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
 
   @@map("countAlerts")
 }
 
-model CountComments{
-  uid     String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
+model CountComments {
+  uid   String @id @default(auto()) @map("_id") @db.ObjectId
+  count Int
 
   @@map("countComments")
 }
-
-

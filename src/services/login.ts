@@ -8,6 +8,7 @@ const prisma = new PrismaClient
 
 const loginService = async ({ name, password }: loginAuth) => {
     try {
+
         const user = await prisma.user.findUnique({
             where: { Name: name }
         });
