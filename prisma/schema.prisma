@@ -27,16 +27,16 @@ model Tokens {
 }
 
 model CountUsers {
-  uid   String @id @default(auto()) @map("_id") @db.ObjectId
-  count Int
+  uid         String  @id @default(auto()) @map("_id") @db.ObjectId
+  count       Int
   statusCount Boolean
 
   @@map("countUsers")
 }
 
 model CountPets {
-  uid   String @id @default(auto()) @map("_id") @db.ObjectId
-  count Int
+  uid         String  @id @default(auto()) @map("_id") @db.ObjectId
+  count       Int
   statusCount Boolean
 
   @@map("countPets")
@@ -51,8 +51,8 @@ model CountImages {
 }
 
 model CountVideos {
-  uid   String @id @default(auto()) @map("_id") @db.ObjectId
-  count Int
+  uid         String  @id @default(auto()) @map("_id") @db.ObjectId
+  count       Int
   statusCount Boolean
 
   @@map("countVideos")
@@ -91,4 +91,121 @@ model CountComments {
   count Int
 
   @@map("countComments")
+}
+
+model UserData {
+  uid            String    @id @default(auto()) @map("_id") @db.ObjectId
+  idTBUserOrigin String    @unique
+  nombre         String
+  sexo           String
+  email          String
+  latitude       Float?
+  longitude      Float?
+  edad           DateTime?
+  role           String
+  status         Boolean
+  google         Boolean
+  created        DateTime
+  googleUserId   String?
+  updated        DateTime
+
+  @@map("userData")
+}
+
+model MediaData {
+  uid             String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBImageOrigin String   @unique
+  uidUser         String
+  img             String
+  charged         DateTime
+  actionPlan      String
+  status          Boolean
+  updated         DateTime
+
+  @@map("mediaData")
+}
+
+model LikeData {
+  uid            String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBLikeOrigin String   @unique
+  uidUser        String
+  uidImg         String
+  like           Int
+  charged        DateTime
+  status         Boolean
+  updated        DateTime
+
+  @@map("likeData")
+}
+
+model WhatsappInteractionData {
+  uid                          String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBWhatsappInteractioOrigin String   @unique
+  BusinessId                   String
+  uidUser                      String
+  interaction                  Int
+  charged                      DateTime
+  status                       Boolean
+  updated                      DateTime
+
+  @@map("whatsappInteractionData")
+}
+
+model MapInteractionData {
+  uid                      String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBMapInteractionOrigin String   @unique
+  BusinessId               String
+  uidUser                  String
+  interaction              Int
+  charged                  DateTime
+  status                   Boolean
+  updated                  DateTime
+
+  @@map("mapInteractionData")
+}
+
+model UsersConnectionData {
+  uid                       String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBUsersConnectionOrigin String   @unique
+  uidUser                   String
+  created                   DateTime
+  statusConnect             Boolean
+  updated                   DateTime
+
+  @@map("usersConnectionData")
+}
+
+model PawsCount {
+  uid                String   @id @default(auto()) @map("_id") @db.ObjectId
+  idTBPwsCountOrigin String   @unique
+  uidUser            String
+  paws               Int
+  lastUpdated        DateTime
+  status             Boolean
+  updated            DateTime
+
+  @@map("pawsCount")
+}
+
+model RegisterBusiness {
+  uid                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  typeUser             String
+  name                 String
+  latitude             Float
+  longitude            Float
+  image                String
+  weekOpening          String
+  weekClosing          String
+  dateAttentionWeek    String
+  weekendOpening       String
+  weekendClosing       String
+  dateAttentionWeekend String
+  phone                Int
+  email                String? @default("example@example.com")
+  approved             Boolean @default(false)
+  created              DateTime
+  lastUpdated          DateTime
+  status               Boolean
+
+  @@map("registerBusiness")
 }
