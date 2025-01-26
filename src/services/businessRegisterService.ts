@@ -66,11 +66,14 @@ const businessRegisterPostService = async ({
 
         // Subimos el archivo a Cloudinary
         const imageUploadResult = await cloudinary.uploader.upload(tempFilePath, {
-            transformation: [
-                { aspect_ratio: "1.0", height: 506, crop: "fill", gravity: "auto" },
-                { quality: "auto" },
-                { fetch_format: "auto" },
-            ],
+            transformation: {
+                aspect_ratio: "1.0",
+                height: 506,
+                crop: "fill",
+                gravity: "auto",
+                quality: "auto",
+                fetch_format: "auto",
+            },
             folder: "BusinessRegister",
         });
 
