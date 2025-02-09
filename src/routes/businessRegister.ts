@@ -12,7 +12,7 @@ const router = Router();
 
 router.get('/', validarJWT, businessRegisterGetController);
 
-router.post('/', validarCampos, upload.single("file"), businessRegisterPostController);
+router.post('/', upload.single("file"), validarCampos, businessRegisterPostController);
 
 router.put('/:id', [
     validarJWT,

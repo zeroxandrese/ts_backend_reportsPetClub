@@ -47,7 +47,7 @@ const businessRegisterPostService = async ({
     email,
 }: BusinessRegisterProps) => {
     try {
-        // Validamos el tipo de usuario
+
         if (
             typeUser !== "Refugio" &&
             typeUser !== "CenterVet" &&
@@ -57,14 +57,13 @@ const businessRegisterPostService = async ({
             throw new Error("El valor de typeUser es inválido.");
         }
 
-        // Generamos un nombre único para el archivo temporal
+        // UIID temporal
         const tempFilename = `${uuidv4()}-${file.originalname}`;
         const tempFilePath = path.join(__dirname, "../../temp", tempFilename);
 
-        // Guardamos el archivo temporalmente en el sistema de archivos
         fs.writeFileSync(tempFilePath, file.buffer);
 
-        // Subimos el archivo a Cloudinary
+        // Carga de imagen a cloudinary
         const imageUploadResult = await cloudinary.uploader.upload(tempFilePath, {
             transformation: {
                 aspect_ratio: "1.0",
@@ -77,10 +76,9 @@ const businessRegisterPostService = async ({
             folder: "BusinessRegister",
         });
 
-        // Eliminamos el archivo temporal después de subirlo
+        // Delete al archivo temp
         fs.unlinkSync(tempFilePath);
 
-        // Creamos el registro del negocio
         const newBusiness = {
             latitude,
             typeUser,
