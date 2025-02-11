@@ -48,15 +48,6 @@ const businessRegisterPostService = async ({
 }: BusinessRegisterProps) => {
     try {
 
-        if (
-            typeUser !== "Refugio" &&
-            typeUser !== "CenterVet" &&
-            typeUser !== "Petshop" &&
-            typeUser !== "Event"
-        ) {
-            throw new Error("El valor de typeUser es inválido.");
-        }
-
         const tempDir = path.join(__dirname, "../../temp");
         if (!fs.existsSync(tempDir)) {
             fs.mkdirSync(tempDir, { recursive: true });
@@ -123,8 +114,7 @@ const businessRegisterPutService = async ({ id }: genericIdProps) => {
 
         const result = await prisma.registerBusiness.update({
             where: {
-                uid: id,
-                approved: false
+                uid: id
             },
             data: {
                 approved: true
