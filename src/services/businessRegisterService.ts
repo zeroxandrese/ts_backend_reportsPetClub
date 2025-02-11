@@ -57,6 +57,11 @@ const businessRegisterPostService = async ({
             throw new Error("El valor de typeUser es inválido.");
         }
 
+        const tempDir = path.join(__dirname, "../../temp");
+        if (!fs.existsSync(tempDir)) {
+            fs.mkdirSync(tempDir, { recursive: true });
+        }
+
         // UIID temporal
         const tempFilename = `${uuidv4()}-${file.originalname}`;
         const tempFilePath = path.join(__dirname, "../../temp", tempFilename);
